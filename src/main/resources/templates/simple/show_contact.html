@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="simple/base::layout(~{::body})">
+<head>
+    <meta charset="UTF-8">
+    <title>Show contact</title>
+</head>
+<body th:if="${contacts}">
+<div class="card mr-10">
+    <div class="card-body">
+        <h2 class="text-center">Your Contacts</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="e:${contacts}">
+                <th  scope="row" th:text="'SCM2020'+${e.cid}"></th>
+                <td th:text="${e.name}+' ('+${e.nickname}+')'"></td>
+                <td th:text="${e.number}"></td>
+                <td >
+                    <a th:href="@{\user\contacts\{userId}(userId=${e.cid})}" href="#">
+                    <span th:text="${e.email}"></span>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-sm" th:href="@{/user/delete/{did}(did=${e.cid})}">Delete</a>
+                    <a class="btn btn-success btn-sm" th:href="@{/user/update/{did}(did=${e.cid})}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

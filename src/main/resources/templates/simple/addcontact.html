@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="simple/base::layout(~{::body})">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Contact</title>
+</head>
+<body>
+<div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert" role="alert">
+    <span th:text="${session.message.content}"></span>
+    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h2 class="text-center">Add Contact</h2>
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col-md-10 offset-md-2">
+                    <form action="#"
+                          th:object="${contact}"
+                          enctype="multipart/form-data"
+                          method="POST"
+                          th:action="@{/user/process-contact}"
+                          class="mt-2"
+                    >
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text mr-3">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                            </div>
+                            <input required type="text" id="fname" name="name" placeholder="Enter The Name" class="form-control">
+                        </div>
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text mr-3">
+                                    <i class="fa fa-user-alt"></i>
+                                </div>
+                            </div>
+                            <input type="text" id="nname" name="nickname" placeholder="Enter The nickname" class="form-control">
+                        </div>
+
+                        <div class="input-group mt-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text mr-3">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                        </div>
+                        <input required type="number" id="" name="number" placeholder="Enter The Phone Number" class="form-control " minlength="8">
+                </div>
+
+                        <div class="input-group mt-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text mr-3">
+                                @
+                            </div>
+                        </div>
+                        <input required type="email" id="uemail" name="email" placeholder="Enter The Email" class="form-control">
+                </div>
+
+                        <div class="input-group mt-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text mr-3">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <input required type="text" id="work" name="work" placeholder="Enter The Work" class="form-control">
+                </div>
+                        <div class="input-group mt-3">
+                            <textarea name="description" id="mytextarea" rows="10" placeholder="Enter The Description" class="form-control"></textarea>
+                        </div>
+
+<!--                        <div class="custom-file mt-3">-->
+<!--                            <input type="file" name="uimage" accept="image/*"/>-->
+<!--                        </div>-->
+                        <div class="container text-center mt-3">
+                            <button class="btn btn-outline-primary">Save Contact</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+</body>
+</html>

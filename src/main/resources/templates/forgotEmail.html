@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::body})"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In Page</title>
+</head>
+<body>
+<section>
+    <div id="login" style="height:220px;">
+        <div class="container">
+            <div class="row justify-content-center align-item-center">
+
+<!--                <div class="container" th:if="${session.message!=null}">-->
+<!--                    <div class="alert alert-danger" role="alert">-->
+<!--                        <span th:text="${session.message}"></span>-->
+<!--                    </div>-->
+<!--                    <th:block th:text="${#session.removeAttribute('message')}"></th:block>-->
+<!--                </div>-->
+                <h4 class="text-center mt-3">Registered Email</h4>
+                <form method="post" action="" th:action="@{/sendOtp}" >
+                    <div class="form-group mt-3">
+                        <input type="email" name="email" id="" class="form-control" placeholder="Enter email here" required/>
+                    </div>
+                    <div class="container mt-4 text-center">
+                        <button class="btn btn-warning">Send OTP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

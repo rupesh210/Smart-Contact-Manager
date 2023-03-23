@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="simple/base::layout(~{::body})">
+<head>
+  <meta charset="UTF-8">
+  <title>Particular Person</title>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <div class="container text-center">
+        <h2 th:text="${c.name}+'( '+${c.nickname}+' )'"></h2>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row"><span>Id</span></th>
+            <td th:text="${c.cid}"></td>
+          </tr>
+          <tr>
+            <th scope="row"><span>Email</span></th>
+            <td th:text="${c.email}"></td>
+          </tr>
+          <tr>
+            <th scope="row"><span>Number</span></th>
+            <td th:text="${c.number}"></td>
+          </tr>
+          <tr>
+            <th scope="row"><span>Work</span></th>
+            <td th:text="${c.work}"></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div class="container">
+          <th:block th:utext="${c.description}"></th:block>
+        </div>
+        <div class="container">
+          <a class="btn btn-danger btn-sm" th:href="@{/user/delete/{did}(did=${c.cid})}">Delete</a>
+          <a class="btn btn-success btn-sm" th:href="@{/user/update/{did}(did=${c.cid})}">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

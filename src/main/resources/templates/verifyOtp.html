@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::body})"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In Page</title>
+</head>
+<body>
+<section>
+    <div id="login" style="height:220px;">
+        <div class="container">
+            <div class="row justify-content-center align-item-center">
+
+
+                <div class="alert alert-success mt-3" role="alert">
+                    We have sent Otp your Email !
+                </div>
+                <div class="container" th:if="${session.message!=null}">
+                    <div class="alert alert-danger" role="alert">
+                        <span th:text="${session.message}"></span>
+                    </div>
+                    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                </div>
+                <form method="post" action="" th:action="@{/verifyOtp}">
+                    <div class="form-group m-3">
+                        <input type="text" name="otp" id="" class="form-control" placeholder="Enter OTP here" required/>
+                    </div>
+                    <div class="container mt-4 text-center">
+                        <button class="btn btn-success">Verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

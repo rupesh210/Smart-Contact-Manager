@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="simple/base::layout(~{::body})">
+<head>
+  <meta charset="UTF-8">
+  <title>Show contact</title>
+</head>
+<body>
+<div class="container">
+<div class="card">
+  <div class="card-body">
+    <table class="table text-center">
+      <h1 class="text-center" th:text="${user.name}"></h1>
+      <tbody>
+      <tr>
+        <th scope="row"><span>Id</span></th>
+        <td th:text="${user.id}"></td>
+      </tr>
+      <tr>
+        <th scope="row"><span>Email</span></th>
+        <td th:text="${user.email}"></td>
+      </tr>
+      <tr>
+        <th scope="row"><span>Role</span></th>
+        <td th:text="${user.role}"></td>
+      </tr>
+      <tr>
+        <th scope="row"><span>Account Active</span></th>
+        <td th:text="${user.enabled}"></td>
+      </tr>
+      <tr>
+        <th scope="row"><span>About</span></th>
+        <td th:text="${user.about}"></td>
+      </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</body>
+</html>
